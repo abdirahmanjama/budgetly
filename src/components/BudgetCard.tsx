@@ -1,14 +1,15 @@
 import React from "react";
-import { Card, ProgressBar } from "react-bootstrap";
+import { Card, ProgressBar, Button, Stack } from "react-bootstrap";
 import { currencyFormatter } from "../utils/utils";
 
 interface Props {
   name: string;
   amount: number;
   max: number;
+  grey: boolean;
 }
 
-export default function BudgetCard({ name, amount, max }: Props) {
+export default function BudgetCard({ name, amount, max, grey }: Props) {
   return (
     <>
       <Card>
@@ -29,6 +30,12 @@ export default function BudgetCard({ name, amount, max }: Props) {
             max={max}
             now={amount}
           />
+          <Stack direction="horizontal" gap={2} className="mt-4">
+            <Button variant="outline-primary" className="ms-auto">
+              Add Expense
+            </Button>
+            <Button variant="outline-secondary">View Expenses</Button>
+          </Stack>
         </Card.Body>
       </Card>
     </>
