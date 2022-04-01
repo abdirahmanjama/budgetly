@@ -10,9 +10,15 @@ interface Props {
 }
 
 export default function BudgetCard({ name, amount, max, grey }: Props) {
+  const classNames = [];
+  if (amount > max) {
+    classNames.push("bg-danger", "bg-opacity-10");
+  } else if (grey) {
+    classNames.push("bg-light");
+  }
   return (
     <>
-      <Card>
+      <Card className={classNames.join(" ")}>
         <Card.Body>
           <Card.Title className="d-flex justify-content-between align-items-baseline fw-normal mb-3">
             <div className="me-2">{name}</div>
