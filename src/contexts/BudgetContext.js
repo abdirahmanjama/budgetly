@@ -7,11 +7,16 @@ export function useBudgets() {
   return useContext(BudgetContext);
 }
 
+export const UNCATEGORISED_BUDGET_ID = "Uncategorised";
+
 export const BudgetsProvider = ({ children }) => {
   const [budgets, setBudgets] = useLocalStorage("budgets", []);
   const [expenses, setExpenses] = useLocalStorage("expenses", []);
 
   function getBudgetExpenses({ budgetId }) {
+    console.log(expenses);
+    const test = expenses.filter((expense) => expense.budgetId === budgetId);
+    console.log(test);
     return expenses.filter((expense) => expense.budgetId === budgetId);
   }
   function addExpense({ budgetId, amount, description }) {
