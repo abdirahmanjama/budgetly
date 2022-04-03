@@ -3,19 +3,16 @@ import { Card, ProgressBar, Button, Stack } from "react-bootstrap";
 import { currencyFormatter } from "../utils/utils";
 
 interface Props {
+  key: any;
   name: string;
   amount: number;
   max: number;
-  grey: boolean;
 }
 
-export default function BudgetCard({ name, amount, max, grey }: Props) {
+export default function BudgetCard({ id, name, amount, max }: Props) {
   const classNames = [];
-  if (amount > max) {
-    classNames.push("bg-danger", "bg-opacity-10");
-  } else if (grey) {
-    classNames.push("bg-light");
-  }
+  if (amount > max) classNames.push("bg-danger", "bg-opacity-10");
+
   return (
     <>
       <Card className={classNames.join(" ")}>
